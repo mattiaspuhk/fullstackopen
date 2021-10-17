@@ -1,17 +1,5 @@
 import React, { useState } from 'react'
 
-const StatisticLine = ({text, value}) => {
-  if (text === "Positive") {
-    return (
-      <tr><td>{text} {value} %</td></tr>
-    )
-  }
-
-  return (
-    <tr><td>{text} {value}</td></tr>
-  )
-}
-
 const Statistics = (all, title, good, neutral, bad) => {
   if (all === 0 && title === true) {
     return (
@@ -33,7 +21,7 @@ const Statistics = (all, title, good, neutral, bad) => {
     <table>
       <tbody>
         <Statistics title={true} all={good+neutral+bad}/>
-          <StatisticLine name="Good" value={good}/>
+          <Statistics name="Good" value={good}/>
           <Statistics name="Neutral" all={good+neutral+bad} content={neutral}/>
           <Statistics name="Bad" all={good+neutral+bad} content={bad}/>
           <Statistics name="Average" all={good+neutral+bad} content={(good-bad)/(good+bad+neutral)}/>
