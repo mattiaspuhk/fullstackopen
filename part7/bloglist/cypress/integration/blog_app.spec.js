@@ -2,8 +2,8 @@ describe('Blog app', function() {
   beforeEach(function() {
     cy.request('POST', 'http://localhost:3001/api/testing/reset')
     const user = {
-      name: 'Mattias Puhk',
-      username: 'mattiasp',
+      name: 'Ananias CARVALHO',
+      username: 'anancarv',
       password: 'test'
     }
     cy.request('POST', 'http://localhost:3001/api/users', user)
@@ -21,19 +21,19 @@ describe('Blog app', function() {
       cy.contains('login')
         .click()
       cy.get('#username')
-        .type('mattiasp')
+        .type('anancarv')
       cy.get('#password')
         .type('test')
       cy.get('#login-button')
         .click()
-      cy.contains('Mattias Puhk logged in')
+      cy.contains('Ananias CARVALHO logged in')
     })
 
     it('login fails with wrong password', function() {
       cy.contains('login')
         .click()
       cy.get('#username')
-        .type('mattiasp')
+        .type('anancarv')
       cy.get('#password')
         .type('wrong')
       cy.get('#login-button')
@@ -43,13 +43,13 @@ describe('Blog app', function() {
         .should('contain', 'Wrong credentials')
         .and('have.css', 'color', 'rgb(255, 0, 0)')
 
-      cy.get('html').should('not.contain', 'Mattias Puhk logged in')
+      cy.get('html').should('not.contain', 'Ananias CARVALHO logged in')
     })
   })
 
   describe('when logged in', function() {
     beforeEach(function() {
-      cy.login({ username: 'mattiasp', password: 'test' })
+      cy.login({ username: 'anancarv', password: 'test' })
     })
 
     it('a new blog can be created', function() {
